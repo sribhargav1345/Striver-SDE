@@ -27,3 +27,22 @@ public:
         return ans;
     }
 };
+
+// Iterative
+vector<int> preorder;
+if(root == NULL) return preorder;
+
+stack<TreeNode*> st;
+st.push(root);
+
+while(!st.empty())
+{
+    TreeNode* itr = st.top();
+    st.pop();
+
+    preorder.push_back(itr -> val);
+
+    if(itr -> right) st.push(itr -> right);
+    if(itr -> left) st.push(itr -> left);
+}
+return preorder;

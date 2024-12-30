@@ -1,40 +1,33 @@
-#include<bits/stdc++.h>
-using namespace std;
-typedef long long ll;
-
-// If we want to find element at position (n,c) then ans = (n-1)C(c-1)
-int nCr(int n,int c)
-{
-    int ans = 1;
-    for(int i=0;i<c;i++)
-    {
-        ans *= (n-i);
-        ans /= (i+1);
+class Solution {
+public:
+    int comb(int n,int m){
+        // Find nCm
+        if(m==0 || m==n) return 1;
+        int res = 1;
+        for(int i=0;i<m;i++)
+        {
+            res *= (n-i);
+            res /= (i+1);
+        }
+        return res;
     }
-    return ans;
-}
-
-// Print nth row
-vector<int> generateRow(int row) {
-    long long ans = 1;
-
-    vector<int> ansRow;
-    ansRow.push_back(1); 
-
-    for (int col = 1; col < row; col++) {
-        ans = ans * (row - col);
-        ans = ans / col;
-        ansRow.push_back(ans);
+    
+    vector<int> generateRows(int n){
+        vector<int> v;
+        for(int i=1;i<=n;i++)
+        {
+            v.push_back(comb(n-1,i-1));
+        }
+        return v;
     }
-    return ansRow;
-}
 
-// Print all rows
-vector<vector<int>> pascalTriangle(int n) {
-    vector<vector<int>> ans;
-
-    for (int row = 1; row <= n; row++) {
-        ans.push_back(generateRow(row));
+    vector<vector<int>> generate(int numRows) {
+        int n = numRows;
+        vector<vector<int>> ans;
+        for(int i=1;i<=n;i++)
+        {
+            ans.push_back(generateRows(i));
+        }
+        return ans;
     }
-    return ans;
-}
+};
