@@ -2,56 +2,34 @@
 using namespace std;
 typedef long long ll;
 
-int solve(int n,string s)
-{
-    vector<int> freq(26,0);
-    for(int i=0;i<n;i++)
-    {
-        freq[s[i]-'a']++;
-    }
-
-    int odd = 0;
-    for(int i=0;i<26;i++)
-    {
-        if(freq[i]%2 != 0){
-            odd++;
-        }
-    }
-
-    if(odd<=1){
-        cout<<0<<endl;
-    }
-    else
-    {
-        for(int i=0;i<26;i++)
-        {
-            char p = s[i] + 'a';
-            vector<vector<int>> v(26);
-            
-            for(int j=0;j<n;j++)
-            {
-                if(s[j] != p)
-                {
-                    
-                }
-            }
-        }
-    }
+static bool compare(pair<ll,ll>& a,pair<ll,ll>& b){
+    return a.second < b.second;
 }
 
 int main()
 {
-    ll t;
-    cin>>t;
+    ll n;
+    cin>>n;
 
-    while(t--)
+    vector<pair<ll,ll>> arr;
+    for(int i=0;i<n;i++)
     {
-        ll n;
-        cin>>n;
-
-        string s;
-        cin>>s;
-
-        solve(n,s);
+        ll x,y;
+        cin>>x>>y;
+    
+        arr.push_back({x,y});
     }
+    
+    sort(arr.begin(),arr.end(),compare);
+
+    ll sum = 0;
+    ll ans = 0;
+
+    for(int i=0;i<n;i++)
+    {
+        sum += arr[i].first;
+        ans += (arr[i].second - sum);
+    }
+
+    cout<<ans<<endl;
 }
