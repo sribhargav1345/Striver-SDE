@@ -1,4 +1,4 @@
-lass Solution {
+class Solution {
   public:
     int rowWithMax1s(vector<vector<int>> &arr) {
         // code here

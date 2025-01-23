@@ -8,7 +8,7 @@ string gett(int k) {
 
     int summ = place*9 + (k-place);     // Max sum which can be obtained
 
-    while(have>=sum){
+    while(have>=summ){
         have /= 9;
         summ -= 9;
         summ += 1;
