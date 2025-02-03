@@ -3,7 +3,7 @@ using namespace std;
 typedef long long ll;
 
 enum class Color {White, Black};
-enum class Piecetype { Pawn, Rook, Knight, Bishop, Queen, King};
+enum class Piecetype { Pawn, Rook, Knight, Bishop, Queen, King };
 
 class Board{
 private:
